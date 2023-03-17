@@ -34,7 +34,10 @@ A movie app made in Flutter with clean architecture using BLoC, Hive and the mov
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/09.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/10.png" width="250" />  
+  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/10.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/11.png" width="250" />  
+  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/12.png" width="250" />  
+
 </p>
 
 
