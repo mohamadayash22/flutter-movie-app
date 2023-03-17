@@ -64,11 +64,11 @@ class ApiConstants {
   }
 
   static String getAllPopularTvShowsPath(int page) {
-    return '$baseUrl/tv/popular?api_key=$apiKey&page=$page';
+    return '$baseUrl/tv/popular?api_key=$apiKey&page=$page&with_original_language=en';
   }
 
   static String getAllTopRatedTvShowsPath(int page) {
-    return '$baseUrl/tv/top_rated?api_key=$apiKey&page=$page';
+    return '$baseUrl/tv/top_rated?api_key=$apiKey&page=$page&with_original_language=en';
   }
 
   // search paths
