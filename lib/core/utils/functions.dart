@@ -180,21 +180,7 @@ String getTrailerUrl(Map<String, dynamic> json) {
   }
 }
 
-void goDetailsView(BuildContext context, Media media) {
-  if (media.isMovie) {
-    context.goNamed(
-      AppRoutes.movieDetailsRoute,
-      params: {'movieId': media.tmdbID.toString()},
-    );
-  } else {
-    context.goNamed(
-      AppRoutes.tvShowDetailsRoute,
-      params: {'tvShowId': media.tmdbID.toString()},
-    );
-  }
-}
-
-void pushDetailsView(BuildContext context, Media media) {
+void navigateToDetailsView(BuildContext context, Media media) {
   if (media.isMovie) {
     context.pushNamed(
       AppRoutes.movieDetailsRoute,

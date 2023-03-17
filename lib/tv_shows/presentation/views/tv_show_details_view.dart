@@ -6,6 +6,7 @@ import 'package:movies_app/core/presentation/components/error_screen.dart';
 import 'package:movies_app/core/presentation/components/loading_indicator.dart';
 import 'package:movies_app/core/presentation/components/section_title.dart';
 import 'package:movies_app/core/resources/app_strings.dart';
+import 'package:movies_app/core/resources/app_values.dart';
 import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/core/utils/functions.dart';
@@ -84,6 +85,7 @@ class TVShowDetailsWidget extends StatelessWidget {
             seasons: tvShowDetails.seasons!,
           ),
           getSimilarSection(tvShowDetails.similar),
+          const SizedBox(height: AppSize.s8),
         ],
       ),
     );

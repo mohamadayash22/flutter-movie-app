@@ -79,6 +79,7 @@ class MovieDetailsWidget extends StatelessWidget {
           _getCast(movieDetails.cast),
           _getReviews(movieDetails.reviews),
           getSimilarSection(movieDetails.similar),
+          const SizedBox(height: AppSize.s8),
         ],
       ),
     );

@@ -19,7 +19,7 @@ class VerticalListViewCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: () {
-        pushDetailsView(context, media);
+        navigateToDetailsView(context, media);
       },
       child: Container(
         height: AppSize.s175,

@@ -19,11 +19,7 @@ class SeasonsSection extends StatelessWidget {
       constraints: const BoxConstraints(maxHeight: AppSize.s400),
       child: ListView.separated(
         shrinkWrap: true,
-        padding: const EdgeInsets.only(
-          left: AppPadding.p16,
-          right: AppPadding.p16,
-          bottom: AppPadding.p6,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
         physics: const BouncingScrollPhysics(),
         itemCount: seasons.length,
         itemBuilder: (context, index) => SeasonCard(

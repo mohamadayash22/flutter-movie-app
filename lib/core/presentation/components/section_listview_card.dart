@@ -24,7 +24,7 @@ class SectionListViewCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              goDetailsView(context, media);
+              navigateToDetailsView(context, media);
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppSize.s8),

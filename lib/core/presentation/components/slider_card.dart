@@ -23,7 +23,7 @@ class SliderCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        goDetailsView(context, media);
+        navigateToDetailsView(context, media);
       },
       child: SafeArea(
         child: Stack(
