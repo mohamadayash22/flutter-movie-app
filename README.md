@@ -1,10 +1,8 @@
 
 # Movie App
-
 A movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
 
 ## Features
-
 - Search feature
 - Watchlist feature
 - Now playing movies
@@ -23,7 +21,6 @@ A movie app made in Flutter with clean architecture using BLoC, Hive and the mov
 
 
 ## Screenshots
-
 <p>
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/01.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/02.png" width="250" />
@@ -33,17 +30,9 @@ A movie app made in Flutter with clean architecture using BLoC, Hive and the mov
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/06.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/09.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/10.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/11.png" width="250" />  
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/12.png" width="250" />  
-
 </p>
 
-
-
 ## Installation
-
 ### 1. Clone the repo
 ```bash
 git clone https://github.com/mohamadayash1/flutter-movie-app.git
@@ -61,6 +50,7 @@ apiKey = 'YOUR_API_KEY';
 ```bash 
 flutter run
 ```
+
 ## Packages
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [carousel_slider](https://pub.dev/packages/carousel_slider)
@@ -80,6 +70,7 @@ flutter run
 - [shimmer](https://pub.dev/packages/shimmer)
 - [stream_transform](https://pub.dev/packages/stream_transform)
 - [url_launcher](https://pub.dev/packages/url_launcher)
+
 
 ## Acknowledgements
 This app is based on 
