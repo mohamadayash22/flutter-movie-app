@@ -32,8 +32,6 @@ class AppStrings {
   static const String oops = 'Ooops';
   static const String tryAgainLater = 'Please try again later';
   static const String errorMessage = 'Something went wrong';
-  static const String errorMessage2 =
-      'Something went wrong, please try again later.';
-  static const String tryAgain = 'Try again';
+  static const String tryAgain = 'try again';
   static const String noResults = 'No results';
 }
