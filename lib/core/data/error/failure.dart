@@ -15,7 +15,3 @@ class ServerFailure extends Failure {
 class DatabaseFailure extends Failure {
   const DatabaseFailure(super.message);
 }
-
-class NoInternetConnectionFailure extends Failure {
-  const NoInternetConnectionFailure(super.message);
-}
