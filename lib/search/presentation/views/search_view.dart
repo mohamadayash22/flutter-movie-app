@@ -7,7 +7,7 @@ import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/search/presentation/components/no_results.dart';
 import 'package:movies_app/search/presentation/components/search_grid_view.dart';
 import 'package:movies_app/search/presentation/components/search_text.dart';
-import 'package:movies_app/search/presentation/components/search_bar.dart';
+import 'package:movies_app/search/presentation/components/search_field.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
 
 class SearchView extends StatelessWidget {
@@ -37,7 +37,7 @@ class SearchWidget extends StatelessWidget {
           ),
           child: Column(
             children: [
-              const SearchBar(),
+              const SearchField(),
               BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
                   switch (state.status) {
