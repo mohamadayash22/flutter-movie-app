@@ -1,6 +1,6 @@
 
 # Movie App
-A movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
+Movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
 
 ## Features
 - Search feature
@@ -35,7 +35,7 @@ A movie app made in Flutter with clean architecture using BLoC, Hive and the mov
 ## Installation
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/mohamadayash1/flutter-movie-app.git
+git clone https://github.com/mohamadayash22/flutter-movie-app.git
 cd flutter-movie-app
 ```
 ### 2. Run pub get
