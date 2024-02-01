@@ -22,9 +22,9 @@ class GridViewCard extends StatelessWidget {
           onTap: () {
             item.isMovie
                 ? context.pushNamed(AppRoutes.movieDetailsRoute,
-                    params: {'movieId': item.tmdbID.toString()})
+                    pathParameters: {'movieId': item.tmdbID.toString()})
                 : context.pushNamed(AppRoutes.tvShowDetailsRoute,
-                    params: {'tvShowId': item.tmdbID.toString()});
+                    pathParameters: {'tvShowId': item.tmdbID.toString()});
           },
           child: AspectRatio(
             aspectRatio: 2 / 3,

@@ -44,7 +44,7 @@ class AppRouter {
                 path: movieDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
                   child: MovieDetailsView(
-                    movieId: int.parse(state.params['movieId']!),
+                    movieId: int.parse(state.pathParameters['movieId']!),
                   ),
                 ),
               ),
@@ -76,7 +76,7 @@ class AppRouter {
                 path: tvShowDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
                   child: TVShowDetailsView(
-                    tvShowId: int.parse(state.params['tvShowId']!),
+                    tvShowId: int.parse(state.pathParameters['tvShowId']!),
                   ),
                 ),
               ),

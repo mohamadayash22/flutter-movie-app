@@ -19,7 +19,7 @@ class SearchRepositoryImpl extends SearchRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 }

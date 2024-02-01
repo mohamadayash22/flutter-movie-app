@@ -22,13 +22,14 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WillPopScope(
-        onWillPop: () async {
-          final String location = GoRouterState.of(context).location;
+      body: PopScope(
+        canPop: true,
+        onPopInvoked: (didPop) {
+          final Uri uri = GoRouterState.of(context).uri;
+          final String location = uri.toString();
           if (!location.startsWith(moviesPath)) {
             _onItemTapped(0, context);
           }
-          return true;
         },
         child: widget.child,
       ),
@@ -70,7 +71,8 @@ class _MainPageState extends State<MainPage> {
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).location;
+    final Uri uri = GoRouterState.of(context).uri;
+    final String location = uri.toString();
     if (location.startsWith(moviesPath)) {
       return 0;
     }
