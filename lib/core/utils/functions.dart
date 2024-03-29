@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/data/network/api_constants.dart';
 import 'package:movies_app/core/domain/entities/media.dart';
-import 'package:movies_app/core/presentation/components/section_listview_card.dart';
 import 'package:movies_app/core/presentation/components/overview_section.dart';
 import 'package:movies_app/core/presentation/components/section_listview.dart';
+import 'package:movies_app/core/presentation/components/section_listview_card.dart';
 import 'package:movies_app/core/presentation/components/section_title.dart';
 import 'package:movies_app/core/resources/app_colors.dart';
 import 'package:movies_app/core/resources/app_routes.dart';
@@ -184,12 +184,12 @@ void navigateToDetailsView(BuildContext context, Media media) {
   if (media.isMovie) {
     context.pushNamed(
       AppRoutes.movieDetailsRoute,
-      params: {'movieId': media.tmdbID.toString()},
+      pathParameters: {'movieId': media.tmdbID.toString()},
     );
   } else {
     context.pushNamed(
       AppRoutes.tvShowDetailsRoute,
-      params: {'tvShowId': media.tmdbID.toString()},
+      pathParameters: {'tvShowId': media.tmdbID.toString()},
     );
   }
 }

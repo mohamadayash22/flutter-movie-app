@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/resources/app_router.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-
 import 'package:movies_app/core/resources/app_routes.dart';
+import 'package:movies_app/core/resources/app_strings.dart';
 import 'package:movies_app/core/resources/app_values.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 
@@ -24,7 +23,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
-          final String location = GoRouterState.of(context).location;
+          final String location = GoRouterState.of(context).uri.path;
           if (!location.startsWith(moviesPath)) {
             _onItemTapped(0, context);
           }
@@ -70,7 +69,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).location;
+    final String location = GoRouterState.of(context).uri.path;
     if (location.startsWith(moviesPath)) {
       return 0;
     }

@@ -1,11 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:movies_app/core/data/error/exceptions.dart';
+import 'package:movies_app/core/data/error/failure.dart';
 import 'package:movies_app/core/domain/entities/media.dart';
 import 'package:movies_app/core/domain/entities/media_details.dart';
 import 'package:movies_app/tv_shows/data/datasource/tv_shows_remote_data_source.dart';
 import 'package:movies_app/tv_shows/domain/entities/season_details.dart';
-import 'package:movies_app/core/data/error/failure.dart';
-import 'package:dartz/dartz.dart';
 import 'package:movies_app/tv_shows/domain/repository/tv_shows_repository.dart';
 import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
 
@@ -22,7 +22,7 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -34,7 +34,7 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -48,7 +48,7 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -61,7 +61,7 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -74,7 +74,7 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 }

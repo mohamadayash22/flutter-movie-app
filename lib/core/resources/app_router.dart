@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/presentation/pages/main_page.dart';
+import 'package:movies_app/core/resources/app_routes.dart';
 import 'package:movies_app/movies/presentation/views/movie_details_view.dart';
 import 'package:movies_app/movies/presentation/views/movies_view.dart';
 import 'package:movies_app/movies/presentation/views/popular_movies_view.dart';
@@ -10,8 +11,6 @@ import 'package:movies_app/tv_shows/presentation/views/popular_tv_shows_view.dar
 import 'package:movies_app/tv_shows/presentation/views/top_rated_tv_shows_view.dart';
 import 'package:movies_app/tv_shows/presentation/views/tv_show_details_view.dart';
 import 'package:movies_app/tv_shows/presentation/views/tv_shows_view.dart';
-
-import 'package:movies_app/core/resources/app_routes.dart';
 import 'package:movies_app/watchlist/presentation/views/watchlist_view.dart';
 
 const String moviesPath = '/movies';
@@ -44,7 +43,7 @@ class AppRouter {
                 path: movieDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
                   child: MovieDetailsView(
-                    movieId: int.parse(state.params['movieId']!),
+                    movieId: int.parse(state.pathParameters['movieId']!),
                   ),
                 ),
               ),
@@ -76,7 +75,7 @@ class AppRouter {
                 path: tvShowDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
                   child: TVShowDetailsView(
-                    tvShowId: int.parse(state.params['tvShowId']!),
+                    tvShowId: int.parse(state.pathParameters['tvShowId']!),
                   ),
                 ),
               ),

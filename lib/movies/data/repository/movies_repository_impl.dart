@@ -4,9 +4,8 @@ import 'package:movies_app/core/data/error/exceptions.dart';
 import 'package:movies_app/core/data/error/failure.dart';
 import 'package:movies_app/core/domain/entities/media.dart';
 import 'package:movies_app/core/domain/entities/media_details.dart';
-import 'package:movies_app/movies/domain/repository/movies_repository.dart';
-
 import 'package:movies_app/movies/data/datasource/movies_remote_data_source.dart';
+import 'package:movies_app/movies/domain/repository/movies_repository.dart';
 
 class MoviesRepositoryImpl extends MoviesRespository {
   final MoviesRemoteDataSource _baseMoviesRemoteDataSource;
@@ -21,7 +20,7 @@ class MoviesRepositoryImpl extends MoviesRespository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -33,7 +32,7 @@ class MoviesRepositoryImpl extends MoviesRespository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -46,7 +45,7 @@ class MoviesRepositoryImpl extends MoviesRespository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 
@@ -59,7 +58,7 @@ class MoviesRepositoryImpl extends MoviesRespository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+      return Left(ServerFailure(failure.message!));
     }
   }
 }
