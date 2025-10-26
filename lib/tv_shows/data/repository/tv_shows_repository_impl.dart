@@ -21,8 +21,8 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
       return Right(result);
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message ?? 'Unknown error'));
     }
   }
 
@@ -33,48 +33,52 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
       return Right(result);
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message ?? 'Unknown error'));
     }
   }
 
   @override
   Future<Either<Failure, SeasonDetails>> getSeasonDetails(
-      SeasonDetailsParams params) async {
+    SeasonDetailsParams params,
+  ) async {
     try {
-      final result =
-          await _baseTVShowsRemoteDataSource.getSeasonDetails(params);
+      final result = await _baseTVShowsRemoteDataSource.getSeasonDetails(
+        params,
+      );
       return Right(result);
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message ?? 'Unknown error'));
     }
   }
 
   @override
   Future<Either<Failure, List<Media>>> getAllPopularTVShows(int page) async {
     try {
-      final result =
-          await _baseTVShowsRemoteDataSource.getAllPopularTVShows(page);
+      final result = await _baseTVShowsRemoteDataSource.getAllPopularTVShows(
+        page,
+      );
       return Right(result);
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message ?? 'Unknown error'));
     }
   }
 
   @override
   Future<Either<Failure, List<Media>>> getAllTopRatedTVShows(int page) async {
     try {
-      final result =
-          await _baseTVShowsRemoteDataSource.getAllTopRatedTVShows(page);
+      final result = await _baseTVShowsRemoteDataSource.getAllTopRatedTVShows(
+        page,
+      );
       return Right(result);
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message ?? 'Unknown error'));
     }
   }
 }

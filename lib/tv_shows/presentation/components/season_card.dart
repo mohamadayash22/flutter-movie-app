@@ -14,11 +14,7 @@ import 'package:movies_app/tv_shows/presentation/components/episodes_widget.dart
 import 'package:movies_app/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
 
 class SeasonCard extends StatelessWidget {
-  const SeasonCard({
-    super.key,
-    required this.season,
-    required this.tvShowId,
-  });
+  const SeasonCard({super.key, required this.season, required this.tvShowId});
 
   final Season season;
   final int tvShowId;
@@ -51,13 +47,11 @@ class SeasonCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    season.name,
-                    style: textTheme.bodyMedium,
-                  ),
+                  Text(season.name, style: textTheme.bodyMedium),
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: AppPadding.p6),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppPadding.p6,
+                    ),
                     child: Text(
                       '${season.episodeCount} ${AppStrings.episodes.toLowerCase()}',
                       style: textTheme.bodyLarge,
@@ -87,7 +81,7 @@ class SeasonCard extends StatelessWidget {
               Icons.arrow_forward_ios_rounded,
               color: AppColors.primaryText,
               size: AppSize.s18,
-            )
+            ),
           ],
         ),
       ),
@@ -95,7 +89,7 @@ class SeasonCard extends StatelessWidget {
   }
 }
 
-void _showBottomSheet(context, id, seasonNumber) {
+void _showBottomSheet(BuildContext context, int id, int seasonNumber) {
   showCustomBottomSheet(
     context,
     BlocProvider.value(

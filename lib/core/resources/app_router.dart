@@ -35,83 +35,75 @@ class AppRouter {
           GoRoute(
             name: AppRoutes.moviesRoute,
             path: moviesPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: MoviesView(),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: MoviesView()),
             routes: [
               GoRoute(
                 name: AppRoutes.movieDetailsRoute,
                 path: movieDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
                   child: MovieDetailsView(
-                    movieId: int.parse(state.params['movieId']!),
+                    movieId: int.parse(state.pathParameters['movieId']!),
                   ),
                 ),
               ),
               GoRoute(
                 name: AppRoutes.popularMoviesRoute,
                 path: popularMoviesPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: PopularMoviesView(),
-                ),
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: PopularMoviesView()),
               ),
               GoRoute(
                 name: AppRoutes.topRatedMoviesRoute,
                 path: topRatedMoviesPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: TopRatedMoviesView(),
-                ),
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: TopRatedMoviesView()),
               ),
             ],
           ),
           GoRoute(
             name: AppRoutes.tvShowsRoute,
             path: tvShowsPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: TVShowsView(),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: TVShowsView()),
             routes: [
               GoRoute(
                 name: AppRoutes.tvShowDetailsRoute,
                 path: tvShowDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
                   child: TVShowDetailsView(
-                    tvShowId: int.parse(state.params['tvShowId']!),
+                    tvShowId: int.parse(state.pathParameters['tvShowId']!),
                   ),
                 ),
               ),
               GoRoute(
                 name: AppRoutes.popularTvShowsRoute,
                 path: popularTVShowsPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: PopularTVShowsView(),
-                ),
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: PopularTVShowsView()),
               ),
               GoRoute(
                 name: AppRoutes.topRatedTvShowsRoute,
                 path: topRatedTVShowsPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: TopRatedTVShowsView(),
-                ),
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: TopRatedTVShowsView()),
               ),
             ],
           ),
           GoRoute(
             name: AppRoutes.searchRoute,
             path: searchPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: SearchView(),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: SearchView()),
           ),
           GoRoute(
             name: AppRoutes.watchlistRoute,
             path: watchlistPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: WatchlistView(),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: WatchlistView()),
           ),
         ],
-      )
+      ),
     ],
   );
 }

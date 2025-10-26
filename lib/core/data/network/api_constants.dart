@@ -1,7 +1,7 @@
 import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
 
 class ApiConstants {
-  static const String apiKey = '';
+  static const String apiKey = '96258291aaa50e562c6b334264341caa';
   static const String baseUrl = 'https://api.themoviedb.org/3';
 
   static const String baseBackdropUrl = 'https://image.tmdb.org/t/p/w1280';

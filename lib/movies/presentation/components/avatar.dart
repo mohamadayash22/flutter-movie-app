@@ -5,10 +5,7 @@ import 'package:movies_app/core/resources/app_values.dart';
 import 'package:shimmer/shimmer.dart';
 
 class Avatar extends StatelessWidget {
-  const Avatar({
-    super.key,
-    required this.avatarUrl,
-  });
+  const Avatar({super.key, required this.avatarUrl});
 
   final String avatarUrl;
 
@@ -24,14 +21,9 @@ class Avatar extends StatelessWidget {
       placeholder: (context, _) => Shimmer.fromColors(
         baseColor: Colors.grey[850]!,
         highlightColor: Colors.grey[800]!,
-        child: const CircleAvatar(
-          radius: AppSize.s20,
-        ),
+        child: const CircleAvatar(radius: AppSize.s20),
       ),
-      errorWidget: (_, __, ___) => const Icon(
-        Icons.error,
-        color: AppColors.error,
-      ),
+      errorWidget: (_, _, _) => const Icon(Icons.error, color: AppColors.error),
     );
   }
 }

@@ -10,10 +10,7 @@ import 'package:movies_app/movies/presentation/components/review_content.dart';
 
 class ReviewCard extends StatelessWidget {
   final Review review;
-  const ReviewCard({
-    required this.review,
-    super.key,
-  });
+  const ReviewCard({required this.review, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +54,7 @@ class ReviewCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             Text(
@@ -70,12 +67,9 @@ class ReviewCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _getRatingBarIndicator(review.rating),
-                Text(
-                  review.elapsedTime,
-                  style: textTheme.bodySmall,
-                ),
+                Text(review.elapsedTime, style: textTheme.bodySmall),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -89,7 +83,7 @@ Widget _getRatingBarIndicator(double rating) {
       rating: rating,
       itemSize: AppSize.s16,
       unratedColor: AppColors.primaryText,
-      itemBuilder: (_, __) {
+      itemBuilder: (_, _) {
         return const Icon(
           Icons.star_rate_rounded,
           color: AppColors.ratingIconColor,

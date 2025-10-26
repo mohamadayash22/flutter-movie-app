@@ -7,10 +7,7 @@ import 'package:movies_app/core/resources/app_routes.dart';
 import 'package:movies_app/core/resources/app_values.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
+  const MainPage({super.key, required this.child});
 
   final Widget child;
 
@@ -22,13 +19,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WillPopScope(
-        onWillPop: () async {
-          final String location = GoRouterState.of(context).location;
+      body: PopScope(
+        canPop: true,
+        onPopInvokedWithResult: (didPop, result) {
+          final String location = GoRouterState.of(context).uri.path;
           if (!location.startsWith(moviesPath)) {
             _onItemTapped(0, context);
           }
-          return true;
         },
         child: widget.child,
       ),
@@ -36,31 +33,19 @@ class _MainPageState extends State<MainPage> {
         items: const [
           BottomNavigationBarItem(
             label: AppStrings.movies,
-            icon: Icon(
-              Icons.movie_creation_rounded,
-              size: AppSize.s20,
-            ),
+            icon: Icon(Icons.movie_creation_rounded, size: AppSize.s20),
           ),
           BottomNavigationBarItem(
             label: AppStrings.shows,
-            icon: Icon(
-              Icons.tv_rounded,
-              size: AppSize.s20,
-            ),
+            icon: Icon(Icons.tv_rounded, size: AppSize.s20),
           ),
           BottomNavigationBarItem(
             label: AppStrings.search,
-            icon: Icon(
-              Icons.search_rounded,
-              size: AppSize.s20,
-            ),
+            icon: Icon(Icons.search_rounded, size: AppSize.s20),
           ),
           BottomNavigationBarItem(
             label: AppStrings.watchlist,
-            icon: Icon(
-              Icons.bookmark_rounded,
-              size: AppSize.s20,
-            ),
+            icon: Icon(Icons.bookmark_rounded, size: AppSize.s20),
           ),
         ],
         currentIndex: _getSelectedIndex(context),
@@ -70,7 +55,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).location;
+    final String location = GoRouterState.of(context).uri.path;
     if (location.startsWith(moviesPath)) {
       return 0;
     }

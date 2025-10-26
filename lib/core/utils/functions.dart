@@ -184,12 +184,12 @@ void navigateToDetailsView(BuildContext context, Media media) {
   if (media.isMovie) {
     context.pushNamed(
       AppRoutes.movieDetailsRoute,
-      params: {'movieId': media.tmdbID.toString()},
+      pathParameters: {'movieId': media.tmdbID.toString()},
     );
   } else {
     context.pushNamed(
       AppRoutes.tvShowDetailsRoute,
-      params: {'tvShowId': media.tmdbID.toString()},
+      pathParameters: {'tvShowId': media.tmdbID.toString()},
     );
   }
 }
@@ -203,9 +203,8 @@ Widget getSimilarSection(List<Media>? similar) {
         SectionListView(
           height: AppSize.s240,
           itemCount: similar.length,
-          itemBuilder: (context, index) => SectionListViewCard(
-            media: similar[index],
-          ),
+          itemBuilder: (context, index) =>
+              SectionListViewCard(media: similar[index]),
         ),
       ],
     );
@@ -234,15 +233,10 @@ void showCustomBottomSheet(BuildContext context, Widget child) {
     context: context,
     backgroundColor: AppColors.secondaryBackground,
     shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(AppSize.s20),
-      ),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(AppSize.s20)),
     ),
     builder: (context) {
-      return SizedBox(
-        height: size * 0.5,
-        child: child,
-      );
+      return SizedBox(height: size * 0.5, child: child);
     },
   );
 }

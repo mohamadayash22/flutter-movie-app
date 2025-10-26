@@ -6,10 +6,7 @@ import 'package:movies_app/core/resources/app_values.dart';
 import 'package:movies_app/search/domain/entities/search_result_item.dart';
 
 class GridViewCard extends StatelessWidget {
-  const GridViewCard({
-    super.key,
-    required this.item,
-  });
+  const GridViewCard({super.key, required this.item});
 
   final SearchResultItem item;
 
@@ -21,10 +18,14 @@ class GridViewCard extends StatelessWidget {
         GestureDetector(
           onTap: () {
             item.isMovie
-                ? context.pushNamed(AppRoutes.movieDetailsRoute,
-                    params: {'movieId': item.tmdbID.toString()})
-                : context.pushNamed(AppRoutes.tvShowDetailsRoute,
-                    params: {'tvShowId': item.tmdbID.toString()});
+                ? context.pushNamed(
+                    AppRoutes.movieDetailsRoute,
+                    pathParameters: {'movieId': item.tmdbID.toString()},
+                  )
+                : context.pushNamed(
+                    AppRoutes.tvShowDetailsRoute,
+                    pathParameters: {'tvShowId': item.tmdbID.toString()},
+                  );
           },
           child: AspectRatio(
             aspectRatio: 2 / 3,
