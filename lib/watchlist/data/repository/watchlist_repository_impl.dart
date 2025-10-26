@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movies_app/core/domain/entities/media.dart';
 import 'package:movies_app/watchlist/data/datasource/watchlist_local_data_source.dart';
 import 'package:movies_app/watchlist/data/models/watchlist_item_model.dart';
-import 'package:movies_app/core/data/error/failure.dart';
+import 'package:movies_app/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:movies_app/watchlist/domain/repository/watchlist_repository.dart';
 

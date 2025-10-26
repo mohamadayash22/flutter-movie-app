@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/core/data/error/failure.dart';
+import 'package:movies_app/core/error/exceptions.dart';
+import 'package:movies_app/core/error/failure.dart';
 import 'package:movies_app/core/domain/entities/media.dart';
 import 'package:movies_app/core/domain/entities/media_details.dart';
 import 'package:movies_app/movies/domain/repository/movies_repository.dart';
