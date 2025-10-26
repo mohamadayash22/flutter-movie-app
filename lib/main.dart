@@ -7,8 +7,10 @@ import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/resources/app_strings.dart';
 import 'package:movies_app/core/resources/app_theme.dart';
 import 'package:movies_app/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
+  await dotenv.load();
   await Hive.initFlutter();
   Hive.registerAdapter(MediaAdapter());
   await Hive.openBox('items');
