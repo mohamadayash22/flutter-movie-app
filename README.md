@@ -1,8 +1,9 @@
-
 # Movie App
+
 Movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
 
 ## Features
+
 - Search feature
 - Watchlist feature
 - Now playing movies
@@ -19,39 +20,50 @@ Movie app made in Flutter with clean architecture using BLoC, Hive and the movie
 - Similar tv shows
 - TV show season details
 
-
 ## Screenshots
+
 <p>
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/01.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/02.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/03.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/04.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/05.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/06.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/01.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/02.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/03.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/04.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/05.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/06.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
+  <img src="https://github.com/mohamadayash22/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
 </p>
 
 ## Installation
+
 ### 1. Clone the repo
+
 ```bash
 git clone https://github.com/mohamadayash22/flutter-movie-app.git
 cd flutter-movie-app
 ```
+
 ### 2. Run pub get
+
 ```bash
 flutter pub get
 ```
-### 3. Add your API key into api_constants file
-```bash
-apiKey = 'YOUR_API_KEY';
+
+### 3. Set up environment variables
+
+Copy `.env.example` to `.env` and add your TMDB API key:
+
 ```
+API_KEY=your_api_key_here
+```
+
 ### 4. Run the app
-```bash 
+
+```bash
 flutter run
 ```
 
 ## Packages
+
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [carousel_slider](https://pub.dev/packages/carousel_slider)
 - [cupertino_icons](https://pub.dev/packages/cupertino_icons)
@@ -59,6 +71,7 @@ flutter run
 - [dio](https://pub.dev/packages/dio)
 - [equatable](https://pub.dev/packages/equatable)
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)
 - [flutter_rating_bar](https://pub.dev/packages/flutter_rating_bar)
 - [get_it](https://pub.dev/packages/get_it)
 - [go_router](https://pub.dev/packages/go_router)
@@ -71,7 +84,7 @@ flutter run
 - [stream_transform](https://pub.dev/packages/stream_transform)
 - [url_launcher](https://pub.dev/packages/url_launcher)
 
-
 ## Acknowledgements
-This app is based on 
+
+This app is based on
 [Build a Movie App - FlutterFlow](https://www.youtube.com/watch?v=ZPkVRoa1AA8) YouTube video by [@abuanwar072](https://github.com/abuanwar072/), special thanks to Abu Anwar for his amazing videos and tutorials!
