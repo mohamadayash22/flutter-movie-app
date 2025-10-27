@@ -4,6 +4,7 @@ class Env {
   Env._();
 
   static String get apiKey => _get('API_KEY');
+  static String get baseUrl => _get('API_BASE_URL');
 
   static String _get(String key) {
     final value = dotenv.env[key];
