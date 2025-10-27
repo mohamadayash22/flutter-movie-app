@@ -50,10 +50,11 @@ flutter pub get
 
 ### 3. Set up environment variables
 
-Copy `.env.example` to `.env` and add your TMDB API key:
+Copy `.env.example` to `.env` and add your TMDB API key and base URL:
 
 ```
 API_KEY=your_api_key_here
+API_BASE_URL=https://api.themoviedb.org/3
 ```
 
 ### 4. Run the app
