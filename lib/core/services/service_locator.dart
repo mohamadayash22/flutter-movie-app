@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movies_app/core/config/env.dart';
 import 'package:movies_app/movies/data/datasource/movies_remote_data_source.dart';
 import 'package:movies_app/movies/data/repository/movies_repository_impl.dart';
 import 'package:movies_app/movies/domain/repository/movies_repository.dart';
@@ -43,15 +45,24 @@ class ServiceLocator {
   ServiceLocator._();
 
   static void init() {
+    sl.registerLazySingleton<Dio>(
+      () => Dio(
+        BaseOptions(
+          baseUrl: Env.baseUrl,
+          queryParameters: {'api_key': Env.apiKey},
+        ),
+      ),
+    );
+
     // Data source
     sl.registerLazySingleton<MoviesRemoteDataSource>(
-      () => MoviesRemoteDataSourceImpl(),
+      () => MoviesRemoteDataSourceImpl(sl()),
     );
     sl.registerLazySingleton<TVShowsRemoteDataSource>(
-      () => TVShowsRemoteDataSourceImpl(),
+      () => TVShowsRemoteDataSourceImpl(sl()),
     );
     sl.registerLazySingleton<SearchRemoteDataSource>(
-      () => SearchRemoteDataSourceImpl(),
+      () => SearchRemoteDataSourceImpl(sl()),
     );
     sl.registerLazySingleton<WatchlistLocalDataSource>(
       () => WatchlistLocalDataSourceImpl(),

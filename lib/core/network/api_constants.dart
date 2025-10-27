@@ -1,9 +1,5 @@
-import 'package:movies_app/core/config/env.dart';
-
 class ApiConstants {
   ApiConstants._();
-
-  static const String baseUrl = 'https://api.themoviedb.org/3';
 
   static const String baseBackdropUrl = 'https://image.tmdb.org/t/p/w1280';
   static const String basePosterUrl = 'https://image.tmdb.org/t/p/w500';
@@ -25,58 +21,23 @@ class ApiConstants {
       'https://popcornsg.s3.amazonaws.com/gallery/1577405144-six-year.png';
 
   // movies paths
-  static String nowPlayingMoviesPath =
-      '$baseUrl/movie/now_playing?api_key=${Env.apiKey}';
-
-  static String popularMoviesPath =
-      '$baseUrl/movie/popular?api_key=${Env.apiKey}';
-
-  static String topRatedMoviesPath =
-      '$baseUrl/movie/top_rated?api_key=${Env.apiKey}';
-
-  static String getMovieDetailsPath(int movieId) {
-    return '$baseUrl/movie/$movieId?api_key=${Env.apiKey}&append_to_response=videos,credits,reviews,similar';
-  }
-
-  static String getAllPopularMoviesPath(int page) {
-    return '$baseUrl/movie/popular?api_key=${Env.apiKey}&page=$page';
-  }
-
-  static String getAllTopRatedMoviesPath(int page) {
-    return '$baseUrl/movie/top_rated?api_key=${Env.apiKey}&page=$page';
-  }
+  static String nowPlayingMoviesPath = '/movie/now_playing';
+  static String popularMoviesPath = '/movie/popular';
+  static String topRatedMoviesPath = '/movie/top_rated';
+  static String movieDetailsPath(int movieId) => '/movie/$movieId';
 
   // tv shows paths
-  static String onAirTvShowsPath =
-      '$baseUrl/tv/on_the_air?api_key=${Env.apiKey}&with_original_language=en';
-
-  static String popularTvShowsPath =
-      '$baseUrl/tv/popular?api_key=${Env.apiKey}&with_original_language=en';
-
-  static String topRatedTvShowsPath =
-      '$baseUrl/tv/top_rated?api_key=${Env.apiKey}&with_original_language=en';
-
-  static String getTvShowDetailsPath(int tvShowId) {
-    return '$baseUrl/tv/$tvShowId?api_key=${Env.apiKey}&append_to_response=similar,videos';
-  }
-
-  static String getSeasonDetailsPath({
+  static String onAirTvShowsPath = '/tv/on_the_air';
+  static String popularTvShowsPath = '/tv/popular';
+  static String topRatedTvShowsPath = '/tv/top_rated';
+  static String tvShowDetailsPath(int tvShowId) => '/tv/$tvShowId';
+  static String seasonDetailsPath({
     required int id,
     required int seasonNumber,
   }) {
-    return '$baseUrl/tv/$id/season/$seasonNumber?api_key=${Env.apiKey}';
+    return '/tv/$id/season/$seasonNumber';
   }
 
-  static String getAllPopularTvShowsPath(int page) {
-    return '$baseUrl/tv/popular?api_key=${Env.apiKey}&page=$page&with_original_language=en';
-  }
-
-  static String getAllTopRatedTvShowsPath(int page) {
-    return '$baseUrl/tv/top_rated?api_key=${Env.apiKey}&page=$page&with_original_language=en';
-  }
-
-  // search paths
-  static String getSearchPath(String title) {
-    return '$baseUrl/search/multi?api_key=${Env.apiKey}&query=$title';
-  }
+  // search path
+  static String searchPath = '/search/multi';
 }

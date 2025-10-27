@@ -9,9 +9,17 @@ abstract class SearchRemoteDataSource {
 }
 
 class SearchRemoteDataSourceImpl extends SearchRemoteDataSource {
+  final Dio dio;
+
+  SearchRemoteDataSourceImpl(this.dio);
+
   @override
   Future<List<SearchResultItemModel>> search(String title) async {
-    final response = await Dio().get(ApiConstants.getSearchPath(title));
+    final response = await dio.get(
+      ApiConstants.searchPath,
+      queryParameters: {'query': title},
+    );
+
     if (response.statusCode == 200) {
       return List<SearchResultItemModel>.from(
         (response.data['results'] as List)

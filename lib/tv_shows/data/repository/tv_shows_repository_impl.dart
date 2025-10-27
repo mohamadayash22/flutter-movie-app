@@ -44,7 +44,8 @@ class TVShowsRepositoryImpl extends TVShowsRepository {
   ) async {
     try {
       final result = await _baseTVShowsRemoteDataSource.getSeasonDetails(
-        params,
+        params.id,
+        params.seasonNumber,
       );
       return Right(result);
     } on ServerException catch (failure) {

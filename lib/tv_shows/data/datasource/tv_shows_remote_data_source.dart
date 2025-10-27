@@ -5,7 +5,6 @@ import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:movies_app/tv_shows/data/models/season_details_model.dart';
 import 'package:movies_app/tv_shows/data/models/tv_show_details_model.dart';
 import 'package:movies_app/tv_shows/data/models/tv_show_model.dart';
-import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
 
 abstract class TVShowsRemoteDataSource {
   Future<List<TVShowModel>> getOnAirTVShows();
@@ -13,15 +12,22 @@ abstract class TVShowsRemoteDataSource {
   Future<List<TVShowModel>> getTopRatedTVShows();
   Future<List<List<TVShowModel>>> getTVShows();
   Future<TVShowDetailsModel> getTVShowDetails(int id);
-  Future<SeasonDetailsModel> getSeasonDetails(SeasonDetailsParams params);
+  Future<SeasonDetailsModel> getSeasonDetails(int id, int seasonNumber);
   Future<List<TVShowModel>> getAllPopularTVShows(int page);
   Future<List<TVShowModel>> getAllTopRatedTVShows(int page);
 }
 
 class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
+  final Dio dio;
+
+  TVShowsRemoteDataSourceImpl(this.dio);
+
   @override
   Future<List<TVShowModel>> getOnAirTVShows() async {
-    final response = await Dio().get(ApiConstants.onAirTvShowsPath);
+    final response = await dio.get(
+      ApiConstants.onAirTvShowsPath,
+      queryParameters: {'with_original_language': 'en'},
+    );
     if (response.statusCode == 200) {
       return List<TVShowModel>.from(
         (response.data['results'] as List).map((e) => TVShowModel.fromJson(e)),
@@ -35,7 +41,10 @@ class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
 
   @override
   Future<List<TVShowModel>> getPopularTVShows() async {
-    final response = await Dio().get(ApiConstants.popularTvShowsPath);
+    final response = await dio.get(
+      ApiConstants.popularTvShowsPath,
+      queryParameters: {'with_original_language': 'en'},
+    );
     if (response.statusCode == 200) {
       return List<TVShowModel>.from(
         (response.data['results'] as List).map((e) => TVShowModel.fromJson(e)),
@@ -49,7 +58,10 @@ class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
 
   @override
   Future<List<TVShowModel>> getTopRatedTVShows() async {
-    final response = await Dio().get(ApiConstants.topRatedTvShowsPath);
+    final response = await dio.get(
+      ApiConstants.topRatedTvShowsPath,
+      queryParameters: {'with_original_language': 'en'},
+    );
     if (response.statusCode == 200) {
       return List<TVShowModel>.from(
         (response.data['results'] as List).map((e) => TVShowModel.fromJson(e)),
@@ -73,7 +85,10 @@ class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
 
   @override
   Future<TVShowDetailsModel> getTVShowDetails(int id) async {
-    final response = await Dio().get(ApiConstants.getTvShowDetailsPath(id));
+    final response = await dio.get(
+      ApiConstants.tvShowDetailsPath(id),
+      queryParameters: {'append_to_response': 'similar,videos'},
+    );
     if (response.statusCode == 200) {
       return TVShowDetailsModel.fromJson(response.data);
     } else {
@@ -84,14 +99,9 @@ class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
   }
 
   @override
-  Future<SeasonDetailsModel> getSeasonDetails(
-    SeasonDetailsParams params,
-  ) async {
-    final response = await Dio().get(
-      ApiConstants.getSeasonDetailsPath(
-        id: params.id,
-        seasonNumber: params.seasonNumber,
-      ),
+  Future<SeasonDetailsModel> getSeasonDetails(int id, int seasonNumber) async {
+    final response = await dio.get(
+      ApiConstants.seasonDetailsPath(id: id, seasonNumber: seasonNumber),
     );
     if (response.statusCode == 200) {
       return SeasonDetailsModel.fromJson(response.data);
@@ -104,8 +114,9 @@ class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
 
   @override
   Future<List<TVShowModel>> getAllPopularTVShows(int page) async {
-    final response = await Dio().get(
-      ApiConstants.getAllPopularTvShowsPath(page),
+    final response = await dio.get(
+      ApiConstants.popularTvShowsPath,
+      queryParameters: {'page': page},
     );
     if (response.statusCode == 200) {
       return List<TVShowModel>.from(
@@ -120,8 +131,9 @@ class TVShowsRemoteDataSourceImpl extends TVShowsRemoteDataSource {
 
   @override
   Future<List<TVShowModel>> getAllTopRatedTVShows(int page) async {
-    final response = await Dio().get(
-      ApiConstants.getAllTopRatedTvShowsPath(page),
+    final response = await dio.get(
+      ApiConstants.topRatedTvShowsPath,
+      queryParameters: {'page': page},
     );
     if (response.statusCode == 200) {
       return List<TVShowModel>.from(
