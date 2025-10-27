@@ -12,7 +12,6 @@ import 'package:movies_app/core/presentation/components/slider_card.dart';
 import 'package:movies_app/core/resources/app_routes.dart';
 import 'package:movies_app/core/resources/app_strings.dart';
 import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/tv_shows/presentation/controllers/tv_shows_bloc/tv_shows_bloc.dart';
 
@@ -21,29 +20,26 @@ class TVShowsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<TVShowsBloc>()..add(GetTVShowsEvent()),
-      child: Scaffold(
-        body: BlocBuilder<TVShowsBloc, TVShowsState>(
-          builder: (context, state) {
-            switch (state.status) {
-              case RequestStatus.loading:
-                return const LoadingIndicator();
-              case RequestStatus.loaded:
-                return TVShowsWidget(
-                  onAirTvShows: state.tvShows[0],
-                  popularTvShows: state.tvShows[1],
-                  topRatedTvShows: state.tvShows[2],
-                );
-              case RequestStatus.error:
-                return ErrorScreen(
-                  onTryAgainPressed: () {
-                    context.read<TVShowsBloc>().add(GetTVShowsEvent());
-                  },
-                );
-            }
-          },
-        ),
+    return Scaffold(
+      body: BlocBuilder<TVShowsBloc, TVShowsState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case RequestStatus.loading:
+              return const LoadingIndicator();
+            case RequestStatus.loaded:
+              return TVShowsWidget(
+                onAirTvShows: state.tvShows[0],
+                popularTvShows: state.tvShows[1],
+                topRatedTvShows: state.tvShows[2],
+              );
+            case RequestStatus.error:
+              return ErrorScreen(
+                onTryAgainPressed: () {
+                  context.read<TVShowsBloc>().add(GetTVShowsEvent());
+                },
+              );
+          }
+        },
       ),
     );
   }

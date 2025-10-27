@@ -13,7 +13,6 @@ import 'package:movies_app/core/presentation/components/section_header.dart';
 import 'package:movies_app/core/presentation/components/section_listview.dart';
 import 'package:movies_app/core/resources/app_strings.dart';
 import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_event.dart';
@@ -24,29 +23,26 @@ class MoviesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<MoviesBloc>()..add(GetMoviesEvent()),
-      child: Scaffold(
-        body: BlocBuilder<MoviesBloc, MoviesState>(
-          builder: (context, state) {
-            switch (state.status) {
-              case RequestStatus.loading:
-                return const LoadingIndicator();
-              case RequestStatus.loaded:
-                return MoviesWidget(
-                  nowPlayingMovies: state.movies[0],
-                  popularMovies: state.movies[1],
-                  topRatedMovies: state.movies[2],
-                );
-              case RequestStatus.error:
-                return ErrorScreen(
-                  onTryAgainPressed: () {
-                    context.read<MoviesBloc>().add(GetMoviesEvent());
-                  },
-                );
-            }
-          },
-        ),
+    return Scaffold(
+      body: BlocBuilder<MoviesBloc, MoviesState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case RequestStatus.loading:
+              return const LoadingIndicator();
+            case RequestStatus.loaded:
+              return MoviesWidget(
+                nowPlayingMovies: state.movies[0],
+                popularMovies: state.movies[1],
+                topRatedMovies: state.movies[2],
+              );
+            case RequestStatus.error:
+              return ErrorScreen(
+                onTryAgainPressed: () {
+                  context.read<MoviesBloc>().add(GetMoviesEvent());
+                },
+              );
+          }
+        },
       ),
     );
   }
