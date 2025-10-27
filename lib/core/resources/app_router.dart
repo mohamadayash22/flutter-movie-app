@@ -26,7 +26,9 @@ const String searchPath = '/search';
 const String watchlistPath = '/watchlist';
 
 class AppRouter {
-  GoRouter router = GoRouter(
+  AppRouter._();
+
+  static GoRouter router = GoRouter(
     initialLocation: moviesPath,
     routes: [
       ShellRoute(

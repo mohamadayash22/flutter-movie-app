@@ -1,4 +1,6 @@
 class AppRoutes {
+  AppRoutes._();
+
   static const String moviesRoute = 'movies';
   static const String movieDetailsRoute = 'movieDetails';
   static const String popularMoviesRoute = 'popularMovies';

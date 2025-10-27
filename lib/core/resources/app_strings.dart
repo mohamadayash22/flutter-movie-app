@@ -1,4 +1,6 @@
 class AppStrings {
+  AppStrings._();
+
   static const String appTitle = 'Movies App';
   static const String seeAll = 'see all';
   static const String popularMovies = 'Popular movies';

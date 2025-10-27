@@ -1,6 +1,8 @@
 import 'package:movies_app/core/config/env.dart';
 
 class ApiConstants {
+  ApiConstants._();
+
   static const String baseUrl = 'https://api.themoviedb.org/3';
 
   static const String baseBackdropUrl = 'https://image.tmdb.org/t/p/w1280';

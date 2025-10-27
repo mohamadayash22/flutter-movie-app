@@ -1,6 +1,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Env {
+  Env._();
+
   static String get apiKey => _get('API_KEY');
 
   static String _get(String key) {

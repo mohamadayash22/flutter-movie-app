@@ -40,26 +40,36 @@ import 'package:movies_app/watchlist/presentation/controllers/watchlist_bloc/wat
 final sl = GetIt.instance;
 
 class ServiceLocator {
+  ServiceLocator._();
+
   static void init() {
     // Data source
     sl.registerLazySingleton<MoviesRemoteDataSource>(
-        () => MoviesRemoteDataSourceImpl());
+      () => MoviesRemoteDataSourceImpl(),
+    );
     sl.registerLazySingleton<TVShowsRemoteDataSource>(
-        () => TVShowsRemoteDataSourceImpl());
+      () => TVShowsRemoteDataSourceImpl(),
+    );
     sl.registerLazySingleton<SearchRemoteDataSource>(
-        () => SearchRemoteDataSourceImpl());
+      () => SearchRemoteDataSourceImpl(),
+    );
     sl.registerLazySingleton<WatchlistLocalDataSource>(
-        () => WatchlistLocalDataSourceImpl());
+      () => WatchlistLocalDataSourceImpl(),
+    );
 
     // Repository
     sl.registerLazySingleton<MoviesRespository>(
-        () => MoviesRepositoryImpl(sl()));
+      () => MoviesRepositoryImpl(sl()),
+    );
     sl.registerLazySingleton<TVShowsRepository>(
-        () => TVShowsRepositoryImpl(sl()));
+      () => TVShowsRepositoryImpl(sl()),
+    );
     sl.registerLazySingleton<SearchRepository>(
-        () => SearchRepositoryImpl(sl()));
+      () => SearchRepositoryImpl(sl()),
+    );
     sl.registerLazySingleton<WatchlistRepository>(
-        () => WatchListRepositoryImpl(sl()));
+      () => WatchListRepositoryImpl(sl()),
+    );
 
     // Use Cases
     sl.registerLazySingleton(() => GetMoviesDetailsUseCase(sl()));
