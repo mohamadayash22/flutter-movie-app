@@ -14,10 +14,5 @@ class SearchResultItem extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        tmdbID,
-        posterUrl,
-        title,
-        isMovie,
-      ];
+  List<Object?> get props => [tmdbID, posterUrl, title, isMovie];
 }

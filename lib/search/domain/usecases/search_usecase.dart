@@ -5,12 +5,12 @@ import 'package:movies_app/search/domain/entities/search_result_item.dart';
 import 'package:movies_app/search/domain/repository/search_repository.dart';
 
 class SearchUseCase extends BaseUseCase<List<SearchResultItem>, String> {
-  final SearchRepository _baseSearchRepository;
+  final SearchRepository _searchRepository;
 
-  SearchUseCase(this._baseSearchRepository);
+  SearchUseCase(this._searchRepository);
 
   @override
   Future<Either<Failure, List<SearchResultItem>>> call(String p) async {
-    return await _baseSearchRepository.search(p);
+    return await _searchRepository.search(p);
   }
 }
