@@ -25,7 +25,7 @@ class MediaDetails extends Equatable {
   final List<Review>? reviews;
   final List<Season>? seasons;
   final List<Media> similar;
-  bool isAdded;
+  bool isBookmarked;
 
   MediaDetails({
     this.id,
@@ -46,23 +46,23 @@ class MediaDetails extends Equatable {
     this.reviews,
     this.seasons,
     required this.similar,
-    this.isAdded = false,
+    this.isBookmarked = false,
   });
 
   @override
   List<Object?> get props => [
-        id,
-        tmdbID,
-        title,
-        posterUrl,
-        backdropUrl,
-        releaseDate,
-        genres,
-        overview,
-        voteAverage,
-        voteCount,
-        trailerUrl,
-        similar,
-        isAdded,
-      ];
+    id,
+    tmdbID,
+    title,
+    posterUrl,
+    backdropUrl,
+    releaseDate,
+    genres,
+    overview,
+    voteAverage,
+    voteCount,
+    trailerUrl,
+    similar,
+    isBookmarked,
+  ];
 }

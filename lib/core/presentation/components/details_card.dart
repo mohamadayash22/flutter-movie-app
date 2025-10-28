@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/domain/entities/media.dart';
 import 'package:movies_app/core/domain/entities/media_details.dart';
 import 'package:movies_app/core/presentation/components/slider_card_image.dart';
+import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
 
 import 'package:movies_app/core/resources/app_colors.dart';
@@ -24,9 +25,9 @@ class DetailsCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
 
-    context
-        .read<WatchlistBloc>()
-        .add(CheckItemAddedEvent(tmdbId: mediaDetails.tmdbID));
+    context.read<WatchlistBloc>().add(
+      CheckBookmarkEvent(tmdbId: mediaDetails.tmdbID),
+    );
     return SafeArea(
       child: Stack(
         children: [
@@ -71,7 +72,7 @@ class DetailsCard extends StatelessWidget {
                               Text(
                                 mediaDetails.voteCount,
                                 style: textTheme.bodySmall,
-                              )
+                              ),
                             ],
                           ),
                         ],
@@ -132,14 +133,15 @@ class DetailsCard extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    mediaDetails.isAdded
-                        ? context
-                            .read<WatchlistBloc>()
-                            .add(RemoveWatchListItemEvent(mediaDetails.id!))
+                    mediaDetails.isBookmarked
+                        ? context.read<WatchlistBloc>().add(
+                            RemoveWatchListItemEvent(mediaDetails.id!),
+                          )
                         : context.read<WatchlistBloc>().add(
-                              AddWatchListItemEvent(
-                                  media: Media.fromMediaDetails(mediaDetails)),
-                            );
+                            AddWatchListItemEvent(
+                              media: Media.fromMediaDetails(mediaDetails),
+                            ),
+                          );
                   },
                   child: Container(
                     padding: const EdgeInsets.all(AppPadding.p8),
@@ -149,24 +151,23 @@ class DetailsCard extends StatelessWidget {
                     ),
                     child: BlocConsumer<WatchlistBloc, WatchlistState>(
                       listener: (context, state) {
-                        if (state.status == WatchlistRequestStatus.itemAdded) {
+                        final action = state.actionStatus;
+                        if (action == BookmarkStatus.added) {
                           mediaDetails.id = state.id;
-                          mediaDetails.isAdded = true;
-                        } else if (state.status ==
-                            WatchlistRequestStatus.itemRemoved) {
+                          mediaDetails.isBookmarked = true;
+                        } else if (action == BookmarkStatus.removed) {
                           mediaDetails.id = null;
-                          mediaDetails.isAdded = false;
-                        } else if (state.status ==
-                                WatchlistRequestStatus.isItemAdded &&
+                          mediaDetails.isBookmarked = false;
+                        } else if (action == BookmarkStatus.exists &&
                             state.id != -1) {
                           mediaDetails.id = state.id;
-                          mediaDetails.isAdded = true;
+                          mediaDetails.isBookmarked = true;
                         }
                       },
                       builder: (context, state) {
                         return Icon(
                           Icons.bookmark_rounded,
-                          color: mediaDetails.isAdded
+                          color: mediaDetails.isBookmarked
                               ? AppColors.primary
                               : AppColors.secondaryText,
                           size: AppSize.s20,

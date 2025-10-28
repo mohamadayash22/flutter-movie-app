@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movies_app/core/config/env.dart';
 import 'package:movies_app/movies/data/datasource/movies_remote_data_source.dart';
 import 'package:movies_app/movies/data/repository/movies_repository_impl.dart';
@@ -31,10 +32,11 @@ import 'package:movies_app/tv_shows/presentation/controllers/tv_shows_bloc/tv_sh
 import 'package:movies_app/movies/presentation/controllers/movie_details_bloc/movie_details_bloc.dart';
 import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_bloc.dart';
 import 'package:movies_app/watchlist/data/datasource/watchlist_local_data_source.dart';
+import 'package:movies_app/watchlist/data/models/watchlist_item_model.dart';
 import 'package:movies_app/watchlist/data/repository/watchlist_repository_impl.dart';
 import 'package:movies_app/watchlist/domain/repository/watchlist_repository.dart';
 import 'package:movies_app/watchlist/domain/usecases/add_watchlist_item_usecase.dart';
-import 'package:movies_app/watchlist/domain/usecases/check_if_item_added_usecase.dart';
+import 'package:movies_app/watchlist/domain/usecases/is_bookmarked_usecase.dart';
 import 'package:movies_app/watchlist/domain/usecases/get_watchlist_items_usecase.dart';
 import 'package:movies_app/watchlist/domain/usecases/remove_watchlist_item_usecase.dart';
 import 'package:movies_app/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
@@ -54,6 +56,10 @@ class ServiceLocator {
       ),
     );
 
+    sl.registerLazySingleton<Box<WatchlistItemModel>>(
+      () => Hive.box<WatchlistItemModel>('items'),
+    );
+
     // Data source
     sl.registerLazySingleton<MoviesRemoteDataSource>(
       () => MoviesRemoteDataSourceImpl(sl()),
@@ -65,7 +71,7 @@ class ServiceLocator {
       () => SearchRemoteDataSourceImpl(sl()),
     );
     sl.registerLazySingleton<WatchlistLocalDataSource>(
-      () => WatchlistLocalDataSourceImpl(),
+      () => WatchlistLocalDataSourceImpl(sl()),
     );
 
     // Repository
@@ -96,7 +102,7 @@ class ServiceLocator {
     sl.registerLazySingleton(() => GetWatchlistItemsUseCase(sl()));
     sl.registerLazySingleton(() => AddWatchlistItemUseCase(sl()));
     sl.registerLazySingleton(() => RemoveWatchlistItemUseCase(sl()));
-    sl.registerLazySingleton(() => CheckIfItemAddedUseCase(sl()));
+    sl.registerLazySingleton(() => IsBookmarkedUseCase(sl()));
 
     // Bloc
     sl.registerFactory(() => MoviesBloc(sl()));

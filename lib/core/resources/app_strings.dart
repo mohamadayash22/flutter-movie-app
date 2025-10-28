@@ -36,4 +36,6 @@ class AppStrings {
   static const String errorMessage = 'Something went wrong';
   static const String tryAgain = 'try again';
   static const String noResults = 'No results';
+  static const unknownError = 'Something went wrong. Please try again.';
+  static const String databaseError = 'Failed to access your local data.';
 }

@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'media.dart';
+part of 'watchlist_item_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class MediaAdapter extends TypeAdapter<Media> {
+class WatchlistItemModelAdapter extends TypeAdapter<WatchlistItemModel> {
   @override
   final int typeId = 1;
 
   @override
-  Media read(BinaryReader reader) {
+  WatchlistItemModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Media(
+    return WatchlistItemModel(
       tmdbID: fields[0] as int,
       title: fields[1] as String,
       posterUrl: fields[2] as String,
@@ -29,7 +29,7 @@ class MediaAdapter extends TypeAdapter<Media> {
   }
 
   @override
-  void write(BinaryWriter writer, Media obj) {
+  void write(BinaryWriter writer, WatchlistItemModel obj) {
     writer
       ..writeByte(8)
       ..writeByte(0)
@@ -56,7 +56,7 @@ class MediaAdapter extends TypeAdapter<Media> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is MediaAdapter &&
+      other is WatchlistItemModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

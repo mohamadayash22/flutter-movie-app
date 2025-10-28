@@ -12,9 +12,7 @@ class GetWatchListItemsEvent extends WatchlistEvent {
 class AddWatchListItemEvent extends WatchlistEvent {
   final Media media;
 
-  const AddWatchListItemEvent({
-    required this.media,
-  });
+  const AddWatchListItemEvent({required this.media});
 
   @override
   List<Object?> get props => [media];
@@ -29,12 +27,10 @@ class RemoveWatchListItemEvent extends WatchlistEvent {
   List<Object?> get props => [index];
 }
 
-class CheckItemAddedEvent extends WatchlistEvent {
+class CheckBookmarkEvent extends WatchlistEvent {
   final int tmdbId;
 
-  const CheckItemAddedEvent({
-    required this.tmdbId,
-  });
+  const CheckBookmarkEvent({required this.tmdbId});
 
   @override
   List<Object?> get props => [tmdbId];

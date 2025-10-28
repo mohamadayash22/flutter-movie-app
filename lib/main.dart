@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
 import 'package:movies_app/core/resources/app_router.dart';
 import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/resources/app_strings.dart';
@@ -9,16 +8,17 @@ import 'package:movies_app/core/resources/app_theme.dart';
 import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_event.dart';
 import 'package:movies_app/tv_shows/presentation/controllers/tv_shows_bloc/tv_shows_bloc.dart';
-import 'package:movies_app/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
+import 'package:movies_app/watchlist/data/models/watchlist_item_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:movies_app/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
 
   await Hive.initFlutter();
-  Hive.registerAdapter(MediaAdapter());
-  await Hive.openBox('items');
+  Hive.registerAdapter(WatchlistItemModelAdapter());
+  await Hive.openBox<WatchlistItemModel>('items');
 
   ServiceLocator.init();
 

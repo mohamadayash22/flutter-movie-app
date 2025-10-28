@@ -5,12 +5,12 @@ import 'package:movies_app/core/domain/usecase/base_use_case.dart';
 import 'package:movies_app/watchlist/domain/repository/watchlist_repository.dart';
 
 class GetWatchlistItemsUseCase extends BaseUseCase<List<Media>, NoParameters> {
-  final WatchlistRepository _baseWatchListRepository;
+  final WatchlistRepository _watchlistRepository;
 
-  GetWatchlistItemsUseCase(this._baseWatchListRepository);
+  GetWatchlistItemsUseCase(this._watchlistRepository);
 
   @override
   Future<Either<Failure, List<Media>>> call(NoParameters p) async {
-    return await _baseWatchListRepository.getWatchListItems();
+    return await _watchlistRepository.getWatchListItems();
   }
 }
