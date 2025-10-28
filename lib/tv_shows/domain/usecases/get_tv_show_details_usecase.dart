@@ -5,11 +5,11 @@ import 'package:movies_app/core/domain/usecase/base_use_case.dart';
 import 'package:movies_app/tv_shows/domain/repository/tv_shows_repository.dart';
 
 class GetTVShowDetailsUseCase extends BaseUseCase<MediaDetails, int> {
-  final TVShowsRepository _baseTVShowsRepository;
+  final TVShowsRepository _tvShowsRepository;
 
-  GetTVShowDetailsUseCase(this._baseTVShowsRepository);
+  GetTVShowDetailsUseCase(this._tvShowsRepository);
   @override
   Future<Either<Failure, MediaDetails>> call(int p) async {
-    return await _baseTVShowsRepository.getTVShowDetails(p);
+    return await _tvShowsRepository.getTVShowDetails(p);
   }
 }

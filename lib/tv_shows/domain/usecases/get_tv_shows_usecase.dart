@@ -5,12 +5,12 @@ import 'package:movies_app/core/domain/usecase/base_use_case.dart';
 import 'package:movies_app/tv_shows/domain/repository/tv_shows_repository.dart';
 
 class GetTVShowsUseCase extends BaseUseCase<List<List<Media>>, NoParameters> {
-  final TVShowsRepository _baseTVShowsRepository;
+  final TVShowsRepository _tvShowsRepository;
 
-  GetTVShowsUseCase(this._baseTVShowsRepository);
+  GetTVShowsUseCase(this._tvShowsRepository);
 
   @override
   Future<Either<Failure, List<List<Media>>>> call(NoParameters p) async {
-    return await _baseTVShowsRepository.getTVShows();
+    return await _tvShowsRepository.getTVShows();
   }
 }

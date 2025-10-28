@@ -7,12 +7,12 @@ import 'package:movies_app/tv_shows/domain/repository/tv_shows_repository.dart';
 
 class GetSeasonDetailsUseCase
     extends BaseUseCase<SeasonDetails, SeasonDetailsParams> {
-  final TVShowsRepository _baseTVShowsRepository;
+  final TVShowsRepository _tvShowsRepository;
 
-  GetSeasonDetailsUseCase(this._baseTVShowsRepository);
+  GetSeasonDetailsUseCase(this._tvShowsRepository);
   @override
   Future<Either<Failure, SeasonDetails>> call(SeasonDetailsParams p) async {
-    return await _baseTVShowsRepository.getSeasonDetails(p);
+    return await _tvShowsRepository.getSeasonDetails(p);
   }
 }
 

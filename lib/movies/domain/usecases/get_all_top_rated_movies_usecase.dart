@@ -5,12 +5,12 @@ import 'package:movies_app/core/domain/usecase/base_use_case.dart';
 import 'package:movies_app/movies/domain/repository/movies_repository.dart';
 
 class GetAllTopRatedMoviesUseCase extends BaseUseCase<List<Media>, int> {
-  final MoviesRespository _baseMoviesRespository;
+  final MoviesRespository _moviesRespository;
 
-  GetAllTopRatedMoviesUseCase(this._baseMoviesRespository);
+  GetAllTopRatedMoviesUseCase(this._moviesRespository);
 
   @override
   Future<Either<Failure, List<Media>>> call(int p) async {
-    return await _baseMoviesRespository.getAllTopRatedMovies(p);
+    return await _moviesRespository.getAllTopRatedMovies(p);
   }
 }
