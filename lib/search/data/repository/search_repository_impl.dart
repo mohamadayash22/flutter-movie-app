@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:movies_app/core/error/exceptions.dart';
 import 'package:movies_app/core/resources/app_strings.dart';
 import 'package:movies_app/search/data/datasource/search_remote_data_source.dart';
@@ -19,8 +18,8 @@ class SearchRepositoryImpl extends SearchRepository {
       return Right(result);
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    } on DioException catch (failure) {
-      return Left(ServerFailure(failure.message ?? AppStrings.dioDefaultError));
+    } catch (_) {
+      return Left(ServerFailure(AppStrings.unknownError));
     }
   }
 }
